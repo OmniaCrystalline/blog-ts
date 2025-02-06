@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+@layer base {
+
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    /* Add more color variables */
+  }
+
+  
+
+  html {
+    /*font-family: 'Lora, serif'*/
+    font-family: "Roboto", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply mx-auto bg-neutral-900 text-white
+  }
+
+  button {
+    @apply border-none rounded bg-neutral-500 hover:bg-neutral-600
+  }
+
+
+
+}
+
+@layer components {
+
+  .dark {
+      @apply bg-neutral-900 text-neutral-50
+    }
+
+  .light{
+
+    @apply bg-neutral-50 text-neutral-900
+  }
+ 
+
+  .modal-btn {
+    @apply bg-transparent border-none
+  }
+
+  .cont {
+    @apply p-5
+  }
+
+  .pag-btn {
+    @apply px-5 py-2 bg-rose-500/50 border-none hover:bg-rose-600/50 disabled:bg-slate-800/50
+  }
+
+  .editor-btn {
+    @apply bg-transparent border-2 rounded-full p-5 outline-none w-fit h-fit hover:bg-inherit
+  }
+
+  .editor-btn svg {
+    @apply w-10 h-10 fill-current
+  }
+
+  .disabled-link {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: lightgray;
+    color: darkgray;
+  }
+
+  .loader {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: block;
+    margin: 15px auto;
+    position: relative;
+    color: #FFF;
+    left: -100px;
+    box-sizing: border-box;
+    animation: shadowRolling 2s linear infinite;
+  }
+
+  @keyframes shadowRolling {
+    0% {
+      box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    12% {
+      box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    25% {
+      box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    36% {
+      box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
+    }
+
+    50% {
+      box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
+    }
+
+    62% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
+    }
+
+    75% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
+    }
+
+    87% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
+    }
+
+    100% {
+      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
+    }
+  }
+}
