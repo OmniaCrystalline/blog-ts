@@ -1,8 +1,9 @@
 import React from 'react'
+import SocialLogin from '../components/SocialLogins'
 
 const page = () => {
   return (
-    <div>locked</div>
+    <SocialLogin />
   )
 }
 

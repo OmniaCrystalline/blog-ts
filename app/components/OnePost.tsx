@@ -4,6 +4,10 @@ import Image from 'next/image'
 import { Suspense } from 'react'
 import Comments from './Comments'
 import CommentForm from './client-components/CommentForm'
+import Link from 'next/link'
+import { transliterate as tr, slugify } from 'transliteration';
+
+
 
 interface OnePostProps {
   slag: string;
@@ -22,9 +26,8 @@ export const OnePost = async (props: OnePostProps) => {
           <h1 className="text-3xl font-bold">{title}</h1>
           <div>
             <Image src={user.image || '/imgs/ava1.jpg'} alt={title} className="rounded-full" width={50} height={50} />
-            <p>By: {user.name}</p></div>
+            <Link href={`/author/${slugify(tr(user.name || 'anonimus'))}?id=${user.id}`}>By: {user.name || 'anonimus'}</Link></div>
         </div>
-
         <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} alt={title} width={200} height={200} className='w-full md:w-1/2' />
       </div>
       <p className="text-lg">{desc}</p>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { Category } from '@prisma/client'
 import Link from 'next/link'
 import prisma from '@/utils/prisma/prisma'
 
@@ -20,10 +19,10 @@ export const Btns = () => {
 }
 
 const Categories = async () => {
-  const categories: Category[] = await prisma.category.findMany()
+  const categories = await prisma.category.findMany()
   return (<div className='p-5'>
     <span className='bold text-xl block mb-2'>Popular categories</span>
-    <div className='flex gap-5 flex-wrap justify-evenly'>
+    <div className='flex flex-wrap gap-5 justify-evenly'>
       {categories && categories.map(e => <Link href={`/category/${e.slug}?page=0`} key={e.id} className={`px-5 py-2 text-center flex-grow ${e.color} rounded`}>{e.title}</Link>)
       }
     </div>

@@ -5,13 +5,21 @@ import Hero from "./components/Hero";
 import Categories from "./components/Categories";
 import { Suspense } from "react";
 import RecentPosts from "./components/client-components/RecentPosts";
+import BlogItem from "./components/BlogLoader";
+//import { Post } from '@prisma/client'
+//import prisma from "@/utils/prisma/prisma";
+
+
+
 
 export default function Home() {
   return (
     <main>
       <div>
-        <Hero />
-        <Categories />
+        <Suspense fallback={<BlogItem />}>
+          <Hero />
+          <Categories />
+        </Suspense>
       </div>
       <div className='grid lg:flex'>
         <div className='lg:w-2/3'>

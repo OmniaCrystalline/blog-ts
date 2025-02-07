@@ -45,19 +45,3 @@ export const addNewPost = async (formdata: FormData): Promise<void> => {
   else revalidatePath("/write");
 };
 
-export const getPostsWithPagination = async (page: number) => {
-  const posts = await prisma.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-    take: 3,
-    skip: page * 3,
-  });
-  const num = await prisma.post.count();
-  const last = Math.ceil(num / 3);
-
-  return {
-    last,
-    posts,
-  };
-};

@@ -1,34 +1,25 @@
-'use client'
-import { useEffect, useState } from "react";
+import { redirect } from "next/dist/server/api-utils"
+import prisma from "@/utils/prisma/prisma"
+import Post from "@/app/components/Post"
 
-
-const page = () => {
-  const [email, setemail] = useState('')
-  const [posts, setposts] = useState([])
-  console.log('posts', posts)
-
-  useEffect(() => {
-    const email = JSON.parse(localStorage.getItem('email'));
-    console.log('email', email)
-    if (email) {
-      setemail(email);
+const page = async ({ searchParams, params }) => {
+  const { id } = await searchParams
+  const {slag} = await params
+  if (!id) redirect('/')
+  const data = await prisma.post.findMany({
+    where: {
+      user: {
+        id: id
+      }
     }
-  }, []);
+  })
+  if(!data) redirect ('/')
 
-  useEffect(() => {
-    async function fetchPosts() {
-      let res = await fetch('/api/author', { email })
-      let data = await res.json()
-      setposts(data)
-    }
-    fetchPosts()
-  }, [email])
-  
-
-  return (
-    <div className='container'>
-      {email}
-    </div>
+  return (<>
+    <h1 className='text-xl p-5'>{slag}</h1>
+    <ul className='container'>
+      {data.map(e => <li key={e.id}><Post post={e} parent="author"/></li>)}
+    </ul></>
   )
 }
 

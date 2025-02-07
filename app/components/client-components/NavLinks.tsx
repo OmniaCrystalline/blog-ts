@@ -40,12 +40,6 @@ const NavLinks = () => {
                 login
             </Link> : <button className=' bg-transparent hover:bg-inherit' onClick={() => signOut()}>logout</button>}
             <Link
-                href='/text'
-                className={path === "/text" ? " text-amber-500" : ""}
-            >
-                text
-            </Link>
-            <Link
                 href='/write'
                 className={path === "/write" ? " text-amber-500" : ""}
             >

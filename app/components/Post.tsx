@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import a from '../images/replace.jpg'
 import { datestring } from './helpers/functions'
 import { Post as IPost } from '@prisma/client'
 import PostDesc from './client-components/PostDesc'
@@ -16,7 +15,7 @@ const Post = ({ post, parent }: { post: IPost, parent: string }) => {
                     <Link href={`category/${catSlag}`} className='text-sm underline'>{catSlag}</Link>
                     <div className='flex justify-between'>
                         <span className='text-sm text-neutral-500'>views: {views}</span>
-                        <span className='text-sm text-neutral-500'>{datestring(createdAt)}</span>
+                        <span className='text-sm text-neutral-500'>{datestring(new Date(createdAt))}</span>
                     </div>
                 </div>
                 <PostDesc desc={desc.slice(0, 1000)} />
@@ -25,7 +24,7 @@ const Post = ({ post, parent }: { post: IPost, parent: string }) => {
                 </div>
             </div>
             <div className='flex-1'>
-                <Image src={`/imgs/${img}` || a} width={500} height={500} alt={title} className=' w-full h-auto' />
+                <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} width={500} height={500} alt={title} className=' w-full h-auto' />
             </div>
         </div>
     )

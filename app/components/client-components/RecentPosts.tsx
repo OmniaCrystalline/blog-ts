@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import Post from '../Post'
 import { Post as IPost } from '@prisma/client'
-import { getPostsWithPagination } from '../actions/action'
 import Link from 'next/link'
 import BlogItem from '../BlogLoader'
 import { GrPrevious, GrNext } from "react-icons/gr";
@@ -14,12 +13,17 @@ const RecentPosts = () => {
   const [pending, setpending] = useState<boolean>(true)
 
   useEffect(() => {
-    (async () => {
-      const data = await getPostsWithPagination(page)
-      setposts(data.posts)
-      setlast(data.last)
+    fetch('/api/posts', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ page }),
+    }).then(res => res.json()).then(res => {
+      setposts(res.posts)
+      setlast(res.last)
       setpending(false)
-    })()
+    })
   }, [page])
 
 
