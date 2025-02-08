@@ -2,7 +2,19 @@
 
 import prisma from "@/utils/prisma/prisma";
 import { NextResponse } from "next/server";
-import { Post as IPost } from "@prisma/client";
+
+interface IPost {
+    id: string;
+    createdAt: Date;
+    slug: string;
+    title: string;
+    desc: string;
+    img: string | null;
+    views: number;
+    catSlag: string;
+    userEmail: string;
+}
+
 
 interface PostRequestBody {
   page: number;
