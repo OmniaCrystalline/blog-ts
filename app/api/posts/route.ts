@@ -1,18 +1,18 @@
 /** @format */
 
 import prisma from "@/utils/prisma/prisma";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { Post as IPost } from "@prisma/client";
 
 interface PostRequestBody {
   page: number;
 }
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   if (req.method === "POST") {
     try {
       const body: PostRequestBody = await req.json();
       const { page } = body;
-      const posts = await prisma.post.findMany({
+      const posts: IPost[] = await prisma.post.findMany({
         orderBy: {
           createdAt: "desc",
         },
@@ -20,11 +20,10 @@ export async function POST(req: NextRequest) {
         skip: Number(page) * 3,
       });
       const n = await prisma.post.count();
-      return  NextResponse.json({ posts, last: Math.ceil(n / 3) })
-      } 
-     catch (error) {
+      return NextResponse.json({ posts, last: Math.ceil(n / 3) });
+    } catch (error) {
       console.error(error);
-      return { error: "An error occurred" }
+      return NextResponse.json({ error: "An error occurred" });
     }
   }
 }
