@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import prisma from '@/utils/prisma/prisma'
-import { ICategory } from '@/prisma/types'
+import { Category as ICategory } from '@prisma/client'
 
 
 export const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-pink-500', 'bg-purple-500', 'bg-indigo-500']
