@@ -3,11 +3,9 @@ import prisma from '@/utils/prisma/prisma'
 import Image from 'next/image'
 import { Suspense } from 'react'
 import Comments from './Comments'
-import CommentForm from './client-components/CommentForm'
+import CommentForm from './CommentForm'
 import Link from 'next/link'
 import { transliterate as tr, slugify } from 'transliteration';
-
-
 
 interface OnePostProps {
   slag: string;

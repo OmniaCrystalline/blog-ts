@@ -2,7 +2,7 @@
 
 "use server";
 import { revalidatePath } from "next/cache";
-import { IComment } from "../client-components/CommentForm";
+import { IComment } from "../CommentForm";
 import prisma from "@/utils/prisma/prisma";
 import { Post } from "@prisma/client";
 import fs from "node:fs/promises";
