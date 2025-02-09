@@ -2,7 +2,7 @@
 import "./globals.css";
 import Footer from "./components/Footer";
 import AuthProvider from "@/utils/providers/AuthProvider";
-import ThemeProvider from "./components/client-components/ThemeProvider";
+import ThemeProvider from "./components/ThemeProvider";
 import Navigation from "./components/Navigation";
 
 

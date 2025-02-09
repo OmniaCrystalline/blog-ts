@@ -1,7 +1,7 @@
 /** @format */
 import React from "react";
 import NavLinks from "./NavLinks";
-import ToggleBtn from "./client-components/ToggleBtn";
+import ToggleBtn from "./ToggleBtn";
 import BurgerMenu from './BurgerMenu'
 
 interface INav {
