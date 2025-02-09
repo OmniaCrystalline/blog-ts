@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import { User } from '@prisma/client'
+import type { User } from '@prisma/client'
 
 interface IAvatar {
   user: User,

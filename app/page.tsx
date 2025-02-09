@@ -6,11 +6,6 @@ import Categories from "./components/Categories";
 import { Suspense } from "react";
 import RecentPosts from "./components/client-components/RecentPosts";
 import BlogItem from "./components/BlogLoader";
-//import { Post } from '@prisma/client'
-//import prisma from "@/utils/prisma/prisma";
-
-
-
 
 export default function Home() {
   return (

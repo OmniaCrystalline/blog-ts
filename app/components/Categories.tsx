@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import prisma from '@/utils/prisma/prisma'
+import { ICategory } from '@/prisma/types'
+
 
 export const colors = ['bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-pink-500', 'bg-purple-500', 'bg-indigo-500']
 export const Btns = () => {
@@ -19,7 +21,7 @@ export const Btns = () => {
 }
 
 const Categories = async () => {
-  const categories = await prisma.category.findMany()
+  const categories: ICategory[] = await prisma.category.findMany()
   return (<div className='p-5'>
     <span className='bold text-xl block mb-2'>Popular categories</span>
     <div className='flex flex-wrap gap-5 justify-evenly'>

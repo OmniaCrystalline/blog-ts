@@ -4,6 +4,7 @@ import { datestring } from './helpers/functions'
 import prisma from '@/utils/prisma/prisma'
 
 const SideMenu = async () => {
+
     const posts = await prisma.post.findMany({
         orderBy: {
             views: 'desc'
