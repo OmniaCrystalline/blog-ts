@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { datestring } from './helpers/functions'
 import { Post as IPost } from '@prisma/client'
-import PostDesc from './client-components/PostDesc'
+import PostDesc from './PostDesc'
 
 const Post = ({ post, parent }: { post: IPost, parent: string }) => {
     const { id, desc, title, slug, views, createdAt, catSlag, img } = post

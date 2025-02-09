@@ -1,8 +1,8 @@
 /** @format */
 import React from "react";
-import NavLinks from "./client-components/NavLinks";
+import NavLinks from "./NavLinks";
 import ToggleBtn from "./client-components/ToggleBtn";
-import BurgerMenu from './client-components/BurgerMenu'
+import BurgerMenu from './BurgerMenu'
 
 interface INav {
   theme: string

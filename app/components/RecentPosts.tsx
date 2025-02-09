@@ -1,9 +1,9 @@
 'use client'
 import React, { useState, useEffect } from 'react'
-import Post from '../Post'
+import Post from './Post'
 import { Post as IPost } from '@prisma/client'
 import Link from 'next/link'
-import BlogItem from '../BlogLoader'
+import BlogItem from './BlogLoader'
 import { GrPrevious, GrNext } from "react-icons/gr";
 
 const RecentPosts = () => {
