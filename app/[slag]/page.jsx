@@ -1,6 +1,6 @@
-import SideMenu from "../components/SideMenu1"
-import SideMenu2 from "../components/SideMenu2"
-import { OnePost } from "../components/OnePost"
+import SideMenu from "../../components/SideMenu1"
+import SideMenu2 from "../../components/SideMenu2"
+import { OnePost } from "../../components/OnePost"
 
 const page = async ({ params }) => {
     const { slag } = await params;
@@ -10,8 +10,8 @@ const page = async ({ params }) => {
                 <OnePost slag={slag} />
             </div>
             <div className='grid gap-5'>
-                    <SideMenu />
-                    <SideMenu2 />
+                <SideMenu />
+                <SideMenu2 />
             </div >
         </div>
     )

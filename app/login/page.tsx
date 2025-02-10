@@ -1,5 +1,5 @@
 import React from 'react'
-import SocialLogin from '../components/SocialLogins'
+import SocialLogin from '../../components/SocialLogins'
 
 const page = () => {
   return (

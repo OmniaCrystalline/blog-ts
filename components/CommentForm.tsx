@@ -1,6 +1,6 @@
 'use client'
 import { useSession } from "next-auth/react";
-import { addComment } from '../components/actions/action'
+import { addComment } from './actions/action'
 
 export interface IComment {
   userEmail: string,

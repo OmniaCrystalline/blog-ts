@@ -1,5 +1,5 @@
 import prisma from "@/utils/prisma/prisma"
-import Post from '../components/Post'
+import Post from './Post'
 import Pag2 from './Pag2'
 
 const CategoryContent = async (params: { category: string, page: number }) => {

@@ -1,11 +1,11 @@
 /** @format */
-import SideMenu2 from "./components/SideMenu2";
-import SideMenu from "./components/SideMenu1";
-import Hero from "./components/Hero";
-import Categories from "./components/Categories";
+import SideMenu2 from "../components/SideMenu2";
+import SideMenu from "../components/SideMenu1";
+import Hero from "../components/Hero";
+import Categories from "../components/Categories";
 import { Suspense } from "react";
-import RecentPosts from "./components/RecentPosts";
-import BlogItem from "./components/BlogLoader";
+import RecentPosts from "../components/RecentPosts";
+import BlogItem from "../components/BlogLoader";
 
 export default function Home() {
   return (

@@ -1,10 +1,10 @@
 /** @format */
 import React from "react";
 
-import Write from "../components/Write";
+import Write from "../../components/Write";
 
 const page = () => {
-  return <Write/>;
+  return <Write />;
 };
 
 export default page;

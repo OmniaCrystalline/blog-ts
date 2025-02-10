@@ -1,4 +1,4 @@
-import CategoryContent from "@/app/components/CategoryContent"
+import CategoryContent from "@/components/CategoryContent"
 
 const page = async ({
     params,
@@ -9,7 +9,7 @@ const page = async ({
 }) => {
     const data = await params
     const par = await searchParams
-    
+
     return (<>
         <h1 className='text-2xl text-indigo-500 text-center pt-4'>{data.category}</h1>
         <CategoryContent category={data.category} page={Number(par.page)} />
