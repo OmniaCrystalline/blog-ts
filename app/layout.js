@@ -1,9 +1,9 @@
 /** @format */
 import "./globals.css";
-import Footer from "./components/Footer";
 import AuthProvider from "@/utils/providers/AuthProvider";
-import ThemeProvider from "./components/ThemeProvider";
-import Navigation from "./components/Navigation";
+import ThemeProvider from "../components/ThemeProvider";
+import Navigation from "../components/Navigation";
+import Footer from '../components/Footer'
 
 
 export const metadata = {

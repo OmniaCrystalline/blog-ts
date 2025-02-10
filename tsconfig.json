@@ -26,7 +26,6 @@
     "**/*.ts",
     "**/*.tsx",
     "app/category/[category]/page.tsx",
-    ".next/types/**/*.ts",
     "components/actions/actions.js",
     "next-env.d.ts",
     ".next/types/**/*.ts"
