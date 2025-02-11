@@ -1,10 +1,10 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import Post from './Post'
-import { Post as IPost } from '@prisma/client'
 import Link from 'next/link'
 import BlogItem from './BlogLoader'
 import { GrPrevious, GrNext } from "react-icons/gr";
+import { Post as IPost } from '@prisma/client'
 
 const RecentPosts = () => {
   const [page, setpage] = useState<number>(0)
@@ -42,7 +42,7 @@ const RecentPosts = () => {
       <button
         className='px-2 text-inherit flex disabled:text-transparent bg-transparent'
         onClick={() => setpage(page + 1)}
-        disabled={page + 1 === last}><Link href='#firsPost' className='flex gap-2 place-items-center'>Next <GrNext /></Link></button>
+        disabled={page + 1 === last}><Link href='#firstPost' className='flex gap-2 place-items-center'>Next <GrNext /></Link></button>
     </div>
   </div>)
 }

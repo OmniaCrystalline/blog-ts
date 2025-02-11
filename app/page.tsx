@@ -7,27 +7,30 @@ import { Suspense } from "react";
 import RecentPosts from "../components/RecentPosts";
 import BlogItem from "../components/BlogLoader";
 
+
 export default function Home() {
   return (
     <main>
-      <div>
-        <Suspense fallback={<BlogItem />}>
-          <Hero />
-          <Categories />
-        </Suspense>
-      </div>
-      <div className='grid lg:flex'>
-        <div className='lg:w-2/3'>
-          <span className='hidden' id='firstPost'></span>
-          <Suspense fallback={<div>loading...</div>}>
-            <RecentPosts />
+      <Suspense fallback={<div>Loading...</div>}>
+        <div>
+          <Suspense fallback={<BlogItem />}>
+            <Hero />
+            <Categories />
           </Suspense>
         </div>
-        <div className='lg:w-1/3 grid'>
-          <SideMenu />
-          <SideMenu2 />
+        <div className="md:flex">
+          <div className='lg:w-2/3'>
+            <span className='hidden' id='firstPost'></span>
+            <Suspense fallback={<div>loading...</div>}>
+              <RecentPosts />
+            </Suspense>
+          </div>
+          <div className='lg:w-1/3 grid'>
+            <SideMenu />
+            <SideMenu2 />
+          </div>
         </div>
-      </div>
-    </main >
+      </Suspense>
+    </main>
   );
 }
