@@ -18,7 +18,7 @@ export default function Home() {
             <Categories />
           </Suspense>
         </div>
-        <div className="md:flex">
+        <div className="lg:flex">
           <div className='lg:w-2/3'>
             <span className='hidden' id='firstPost'></span>
             <Suspense fallback={<div>loading...</div>}>

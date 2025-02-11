@@ -29,6 +29,6 @@
     "components/actions/actions.js",
     "next-env.d.ts",
     ".next/types/**/*.ts"
-  ],
+, "utils/cloudinary/cloudinary.jsx"  ],
   "exclude": ["node_modules"]
 }

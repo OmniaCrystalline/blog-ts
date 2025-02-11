@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { datestring } from './helpers/functions'
 import { Post as IPost } from '@prisma/client'
 import PostDesc from './PostDesc'
+import ClientImage from './ClientImage'
 
 const Post = ({ post, parent }: { post: IPost, parent: string }) => {
     const { id, desc, title, slug, views, createdAt, catSlag, img } = post
@@ -23,8 +24,9 @@ const Post = ({ post, parent }: { post: IPost, parent: string }) => {
                     <Link className='text-sm text-neutral-500 underline' href={`/${slug}`}>details</Link>
                 </div>
             </div>
-            <div className='flex-1'>
-                <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} width={500} height={500} alt={title} className=' w-full h-auto' />
+            <div className='flex-1 ml-auto mr-auto'>
+                {img && img.includes('blog') && <ClientImage img={img} title={title} />}
+                {!img?.includes('blog') && <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} width={500} height={500} alt={title} className=' w-full h-auto' />}
             </div>
         </div>
     )

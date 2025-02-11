@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 import { IComment } from "../CommentForm";
 import prisma from "@/utils/prisma/prisma";
 import { Post } from "@prisma/client";
-import fs from "node:fs/promises";
+//import fs from "node:fs/promises";
 import { transliterate as tr, slugify } from "transliteration";
 
 export const addComment = async (props: IComment) => {
@@ -16,8 +16,10 @@ export const addComment = async (props: IComment) => {
 
 export const addNewPost = async (formdata: FormData): Promise<void> => {
   const catSlag = formdata.get("cat");
+  const img = formdata.get("img");
+  console.log(img)
   if (catSlag === "") return;
-  const file = formdata.get("img") as File;
+  /*const file = formdata.get("img") as File;
   if (file.size !== 0) {
     if (file.size > 1000000) {
       console.error("max lim 1mb");
@@ -26,7 +28,7 @@ export const addNewPost = async (formdata: FormData): Promise<void> => {
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
     await fs.writeFile(`public/imgs/${file.name}`, buffer);
-  }
+  }*/
   const userEmail = formdata.get("userEmail");
   const title = formdata.get("title");
   const desc = formdata.get("desc");
@@ -34,10 +36,11 @@ export const addNewPost = async (formdata: FormData): Promise<void> => {
   const data = {
     title,
     desc,
-    img: file.size !== 0 ? file.name : "",
+    //img: file.size !== 0 ? file.name : "",
     slug,
     userEmail,
     catSlag,
+    img
   } as Post;
   const res = await prisma.post.create({ data });
   console.log("res", res);

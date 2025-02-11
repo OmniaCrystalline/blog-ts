@@ -35,8 +35,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ setopen, open }) => {
         <div className='grid gap-5 text-2xl text-center text-inherit bg-inherit'>
             <Link href='/' className='hover:scale-105 transition-all'>home</Link>
             <Link href='/login' className='hover:scale-105 transition-all'>login</Link>
-            <Link href='/locked' className='hover:scale-105 transition-all'>locked</Link>
-            <Link href='/blog' className='hover:scale-105 transition-all'>blog</Link>
+            <Link href='/write' className='hover:scale-105 transition-all'>write</Link>
         </div>
     </div>)
 }

@@ -6,7 +6,7 @@ import Comments from './Comments'
 import CommentForm from './CommentForm'
 import Link from 'next/link'
 import { transliterate as tr, slugify } from 'transliteration';
-
+import ClientImage from './ClientImage'
 interface OnePostProps {
   slag: string;
 }
@@ -22,11 +22,12 @@ export const OnePost = async (props: OnePostProps) => {
       <div className="md:flex md:justify-between gap-2 mb-2">
         <div className="flex flex-col gap-2 justify-between">
           <h1 className="text-3xl font-bold">{title}</h1>
-          <div>
-            <Image src={user.image || '/imgs/ava1.jpg'} alt={title} className="rounded-full" width={50} height={50} />
-            <Link href={`/author/${slugify(tr(user.name || 'anonimus'))}?id=${user.id}`}>By: {user.name || 'anonimus'}</Link></div>
+          <div className='flex gap-2 place-items-center p-2'>
+            <Image src={user.image || '/imgs/ava1.jpg'} alt={user.name || 'anonimus'} width={40} height={40} className="rounded-full" />
+            <Link href={`/author/${slugify(tr(user.name || 'anonimus'))}?id=${user.id}`}>By: {user.name || 'anonimus'}</Link>
+          </div>
         </div>
-        <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} alt={title} width={200} height={200} className='w-full md:w-1/2' />
+        {img && <ClientImage img={img} title={title} />}
       </div>
       <p className="text-lg">{desc}</p>
       <Suspense fallback={<div>Loading...</div>}>
