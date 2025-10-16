@@ -51,7 +51,7 @@ export async function POST(req: Request) {
     let blocks = [];
     try {
       blocks = JSON.parse(content);
-    } catch (error) {
+    } catch {
       return NextResponse.json(
         { error: "Invalid content format" },
         { status: 400 }
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
 
     // Convert blocks to HTML
     const htmlContent = blocks
-      .map((block: any) => {
+      .map((block: { type: string; content: string; level?: number; src?: string }) => {
         if (block.type === "heading") {
           const level = block.level || 1;
           return `<h${level}>${block.content}</h${level}>`;
@@ -92,7 +92,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ success: true, post });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to create post" },
       { status: 500 }

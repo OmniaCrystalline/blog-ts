@@ -84,7 +84,7 @@ export default function Write({ categories = [] }: WriteProps) {
             setBlocks([])
             setImageUrl('')
             alert('Post created successfully!')
-        } catch (error) {
+        } catch {
             alert('Error creating post. Please try again.')
         } finally {
             setIsSaving(false)
@@ -111,7 +111,7 @@ export default function Write({ categories = [] }: WriteProps) {
             throw new Error(`Failed to create post: ${errorData.error || 'Unknown error'}`)
         }
 
-        const result = await res.json()
+        await res.json()
 
         router.push('/')
         router.refresh()
@@ -147,7 +147,7 @@ export default function Write({ categories = [] }: WriteProps) {
                                 {cat.title}
                             </option>
                         ))}
-                        </select>
+                    </select>
                 </div>
                 <div>
                     <label className="block mb-2">Image</label>
@@ -214,7 +214,7 @@ export default function Write({ categories = [] }: WriteProps) {
                         {isSaving ? 'Saving...' : '💾 Save Post'}
                     </button>
                 </div>
-                    </form>
+            </form>
         </div>
     )
 }

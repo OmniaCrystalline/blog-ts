@@ -20,7 +20,7 @@ export default function SimpleUploader({ seturl }: SimpleUploaderProps) {
             // Create a simple URL for the file (for demo purposes)
             const url = URL.createObjectURL(file)
             seturl(url)
-        } catch (err) {
+        } catch {
             setError('Failed to upload file')
         } finally {
             setUploading(false)
