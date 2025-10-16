@@ -25,8 +25,8 @@ const Post = ({ post, parent }: { post: IPost, parent: string }) => {
                 </div>
             </div>
             <div className='flex-1 ml-auto mr-auto'>
-                {img && img.includes('blog') && <ClientImage img={img} title={title} />}
-                {!img?.includes('blog') && <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} width={500} height={500} alt={title} className=' w-full h-auto' />}
+                {img && (img.includes('blog') || img.includes('cloudinary')) && <ClientImage img={img} title={title} />}
+                {img && !img.includes('blog') && !img.includes('cloudinary') && <Image src={`/imgs/${img}` || '/imgs/ava1.jpg'} width={500} height={500} alt={title} className=' w-full h-auto' />}
             </div>
         </div>
     )

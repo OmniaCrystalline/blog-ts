@@ -10,8 +10,6 @@
     --primary-foreground: 0 0% 98%;
   }
 
-  
-
   html {
     font-family: 'Lora, serif';
     font-family: "Roboto", sans-serif;
@@ -25,22 +23,16 @@
   button {
     @apply border-none rounded bg-neutral-500 hover:bg-neutral-600
   }
-
-
-
 }
 
 @layer components {
-
   .dark {
-      @apply bg-neutral-900 text-neutral-50
-    }
+    @apply bg-neutral-900 text-neutral-50
+  }
 
-  .light{
-
+  .light {
     @apply bg-neutral-50 text-neutral-900
   }
- 
 
   .modal-btn {
     @apply bg-transparent border-none
@@ -63,60 +55,89 @@
   }
 
   .disabled-link {
-    cursor: not-allowed;
-    pointer-events: none;
-    background-color: lightgray;
-    color: darkgray;
+    @apply cursor-not-allowed pointer-events-none bg-gray-300 text-gray-500
   }
 
   .loader {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    display: block;
-    margin: 15px auto;
-    position: relative;
-    color: #FFF;
-    left: -100px;
-    box-sizing: border-box;
-    animation: shadowRolling 2s linear infinite;
+    @apply w-2.5 h-2.5 rounded-full block my-4 mx-auto relative text-white -left-24 box-border animate-[shadowRolling_2s_linear_infinite]
   }
 
-  @keyframes shadowRolling {
-    0% {
-      box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
+  /* React Quill styles */
+  .ql-toolbar.ql-snow {
+    @apply border border-neutral-500 bg-neutral-800 rounded-t-lg
+  }
 
-    12% {
-      box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
+  .ql-container.ql-snow {
+    @apply border border-neutral-500 bg-neutral-800 rounded-b-lg min-h-[200px]
+  }
 
-    25% {
-      box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
-    }
+  .ql-editor {
+    @apply text-neutral-200 text-base
+  }
 
-    36% {
-      box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
-    }
+  .ql-snow .ql-stroke {
+    @apply stroke-neutral-200
+  }
 
-    50% {
-      box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
-    }
+  .ql-snow .ql-fill {
+    @apply fill-neutral-200
+  }
 
-    62% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
-    }
+  .ql-snow .ql-picker {
+    @apply text-neutral-200
+  }
 
-    75% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
-    }
+  .ql-snow .ql-picker-options {
+    @apply bg-neutral-800 border border-neutral-500
+  }
 
-    87% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
-    }
+  .ql-snow .ql-picker-item {
+    @apply text-neutral-200
+  }
 
-    100% {
-      box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
-    }
+  .ql-snow .ql-picker-item.ql-selected {
+    @apply text-blue-500
+  }
+
+  .ql-snow .ql-picker-item:hover {
+    @apply text-blue-500
+  }
+}
+
+@keyframes shadowRolling {
+  0% {
+    box-shadow: 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  12% {
+    box-shadow: 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  25% {
+    box-shadow: 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0), 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  36% {
+    box-shadow: 120px 0 white, 110px 0 white, 100px 0 white, 0px 0 rgba(255, 255, 255, 0);
+  }
+
+  50% {
+    box-shadow: 130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white;
+  }
+
+  62% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white, 110px 0 white;
+  }
+
+  75% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white, 120px 0 white;
+  }
+
+  87% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 130px 0 white;
+  }
+
+  100% {
+    box-shadow: 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0), 200px 0 rgba(255, 255, 255, 0);
   }
 }

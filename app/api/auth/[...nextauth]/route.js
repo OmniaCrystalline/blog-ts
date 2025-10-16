@@ -6,7 +6,6 @@ import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import GitHubProvider from "next-auth/providers/github";
 
-
 const prisma = new PrismaClient();
 
 const authOptions = {
@@ -21,6 +20,18 @@ const authOptions = {
     }),
   ],
   adapter: PrismaAdapter(prisma),
+  session: {
+    strategy: "database",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+  },
+  callbacks: {
+    session: async ({ session, user }) => {
+      if (session?.user) {
+        session.user.id = user.id;
+      }
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);

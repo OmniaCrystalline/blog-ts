@@ -1,23 +1,26 @@
 /** @format */
-import React, { Suspense } from "react";
-import prisma from "@/utils/prisma/prisma";
-import Write from "../../components/Write";
+import React from "react";
+import prisma from "../../utils/prisma/prisma";
+import Write from '@/components/Write'
 
-const page = () => {
-  const categories = prisma.category.findMany({
+export default async function WritePage() {
+  const categories = await prisma.category.findMany({
     select: {
+      id: true,
       title: true,
+      slug: true,
+      img: true,
+      color: true,
     }
   })
-  if (!categories) return
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Write categories={categories} />
-    </Suspense>
-  )
-};
 
-export default page;
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">Write New Post</h1>
+      <Write categories={categories} />
+    </div>
+  )
+}
 
 
 

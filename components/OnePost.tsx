@@ -7,6 +7,7 @@ import CommentForm from './CommentForm'
 import Link from 'next/link'
 import { transliterate as tr, slugify } from 'transliteration';
 import ClientImage from './ClientImage'
+import SafeHTML from './SafeHTML'
 interface OnePostProps {
   slag: string;
 }
@@ -23,13 +24,13 @@ export const OnePost = async (props: OnePostProps) => {
         <div className="flex flex-col gap-2 justify-between">
           <h1 className="text-3xl font-bold">{title}</h1>
           <div className='flex gap-2 place-items-center p-2'>
-            <Image src={user.image || '/imgs/ava1.jpg'} alt={user.name || 'anonimus'} width={40} height={40} className="rounded-full" />
-            <Link href={`/author/${slugify(tr(user.name || 'anonimus'))}?id=${user.id}`}>By: {user.name || 'anonimus'}</Link>
+            <Image src={user.image || '/imgs/ava1.jpg'} alt={user.name || 'anonymous'} width={40} height={40} className="rounded-full" />
+            <Link href={`/author/${slugify(tr(user.name || 'anonymous'))}?id=${user.id}`}>By: {user.name || 'anonymous'}</Link>
           </div>
         </div>
         {img && <ClientImage img={img} title={title} />}
       </div>
-      <p className="text-lg">{desc}</p>
+      <SafeHTML content={desc} className="text-lg" />
       <Suspense fallback={<div>Loading...</div>}>
         <CommentForm slug={slug} />
       </Suspense>

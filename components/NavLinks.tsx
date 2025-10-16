@@ -4,29 +4,28 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useSession } from 'next-auth/react'
 import { signOut } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
-
-
 const NavLinks = () => {
     const [first, setfirst] = useState('login')
     const [user, setuser] = useState('')
     const { data, status } = useSession()
-    const router = useRouter()
 
     useEffect(() => {
         if (status === 'authenticated') {
             setfirst('logout')
             if (data.user && data.user.name) {
                 setuser(data.user.name)
+            } else {
+                setuser('User')
             }
-            router.push('/')
-
+        } else {
+            setfirst('login')
+            setuser('')
         }
-    }, [status, data, router])
+    }, [status, data])
     const path = usePathname()
     return (
         <div className='hidden md:flex rounded flex-1 justify-end gap-5'>
-            <span className=' text-amber-700 border-l'>{user}</span>
+            <span className=' text-amber-700'>Hello, {user || 'Guest'}</span>
             <Link
                 href='/'
                 className={path === "/" ? " text-amber-500" : ""}
