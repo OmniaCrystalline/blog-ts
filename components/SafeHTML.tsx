@@ -9,8 +9,10 @@ interface SafeHTMLProps {
 
 export default function SafeHTML({ content, className }: SafeHTMLProps) {
     const [sanitizedContent, setSanitizedContent] = useState('')
+    const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
+        setMounted(true)
         // Sanitize HTML content to prevent XSS attacks
         const clean = DOMPurify.sanitize(content, {
             ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'blockquote', 'img'],
@@ -18,6 +20,10 @@ export default function SafeHTML({ content, className }: SafeHTMLProps) {
         })
         setSanitizedContent(clean)
     }, [content])
+
+    if (!mounted) {
+        return <div className={className}>Loading...</div>
+    }
 
     return (
         <div
