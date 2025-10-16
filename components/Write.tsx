@@ -147,7 +147,7 @@ export default function Write({ categories = [] }: WriteProps) {
                                 {cat.title}
                             </option>
                         ))}
-                    </select>
+                        </select>
                 </div>
                 <div>
                     <label className="block mb-2">Image</label>
@@ -214,7 +214,7 @@ export default function Write({ categories = [] }: WriteProps) {
                         {isSaving ? 'Saving...' : '💾 Save Post'}
                     </button>
                 </div>
-            </form>
+                    </form>
         </div>
     )
 }
