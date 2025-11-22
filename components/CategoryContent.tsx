@@ -1,11 +1,12 @@
 import prisma from "@/utils/prisma/prisma"
 import Post from './Post'
 import Pag2 from './Pag2'
+import { Post as IPost } from '@prisma/client'
 
 const CategoryContent = async (params: { category: string, page: number }) => {
     const { page } = params
     const postsOnPage = 1;
-    const posts = await prisma.post.findMany({
+    const posts: IPost[] = await prisma.post.findMany({
         where: {
             catSlag: params.category
         },
@@ -22,7 +23,7 @@ const CategoryContent = async (params: { category: string, page: number }) => {
 
     return (<>
         <span id='firstPost'></span>
-        <ul>{posts && posts.map(e => <li key={e.id}><Post post={e} parent={'cat'} /></li>)}</ul>
+        <ul>{posts && posts.map((e) => <li key={e.id}><Post post={e} parent={'cat'} /></li>)}</ul>
         <Pag2 last={last} page={page} />
     </>)
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 import './BlockEditor.css'
 
 interface Block {
@@ -133,7 +134,14 @@ export default function BlockEditor({ onChange, initialBlocks = [] }: BlockEdito
                                 className="image-url-input"
                             />
                             {block.src && (
-                                <img src={block.src} alt="Block image" className="block-image" />
+                                <Image 
+                                    src={block.src} 
+                                    alt="Block image" 
+                                    width={500} 
+                                    height={300} 
+                                    className="block-image"
+                                    unoptimized={block.src.startsWith('http')}
+                                />
                             )}
                         </div>
                     )}
