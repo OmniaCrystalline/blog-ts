@@ -22,7 +22,14 @@ export default function SafeHTML({ content, className }: SafeHTMLProps) {
     }, [content])
 
     if (!mounted) {
-        return <div className={className}>Loading...</div>
+        return (
+            <div className={className}>
+                <div className="flex items-center gap-2 py-2">
+                    <div className="w-4 h-4 border-2 border-neutral-600 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-neutral-500 text-sm">Завантаження...</span>
+                </div>
+            </div>
+        )
     }
 
     return (

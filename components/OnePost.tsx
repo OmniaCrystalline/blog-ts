@@ -31,7 +31,17 @@ export const OnePost = async (props: OnePostProps) => {
         {img && <ClientImage img={img} title={title} />}
       </div>
       <SafeHTML content={desc} className="text-lg" />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={
+        <div className="flex items-center justify-center py-8">
+          <div className="flex flex-col items-center gap-3">
+            <div className="relative w-8 h-8">
+              <div className="absolute top-0 left-0 w-full h-full border-3 border-neutral-700 rounded-full"></div>
+              <div className="absolute top-0 left-0 w-full h-full border-3 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
+            </div>
+            <p className="text-neutral-500 text-xs">Завантаження...</p>
+          </div>
+        </div>
+      }>
         <CommentForm slug={slug} />
       </Suspense>
       <div className="mt-4">

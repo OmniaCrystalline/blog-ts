@@ -20,10 +20,17 @@ export const Btns = () => {
 
 const Categories = async () => {
   const categories = await prisma.category.findMany()
-  return (<div className='p-5'>
-    <span className='bold text-xl block mb-2'>Popular categories</span>
-    <div className='flex flex-wrap gap-5 justify-evenly'>
-      {categories && categories.map(e => <Link href={`/category/${e.slug}?page=0`} key={e.id} className={`px-5 py-2 text-center flex-grow ${e.color} rounded`}>{e.title}</Link>)
+  return (<div className='p-5 md:p-6 mb-6'>
+    <span className='text-sm text-neutral-400 block mb-2'>Popular categories</span>
+    <h2 className='font-bold text-xl md:text-2xl mb-5'>Browse by topic</h2>
+    <div className='flex flex-wrap gap-3 md:gap-4'>
+      {categories && categories.map(e => <Link 
+        href={`/category/${e.slug}?page=0`} 
+        key={e.id} 
+        className={`px-4 py-2.5 md:px-5 md:py-3 text-center flex-shrink-0 ${e.color} rounded-lg hover:opacity-90 hover:scale-105 transition-all text-white font-medium shadow-md shadow-black/20 whitespace-nowrap`}
+      >
+        {e.title}
+      </Link>)
       }
     </div>
   </div>

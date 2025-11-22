@@ -27,22 +27,22 @@ const RecentPosts = () => {
   }, [page])
 
 
-  return (<div className='grid gap-2 h-full'>
-    <div className='gap-1 px-5 '>
-      <span className=''>What`s new</span><br />
-      <span className='bold text-xl'>Most recent</span>
+  return (<div className='grid gap-5 h-full'>
+    <div className='gap-1 px-5 md:px-6 pb-2'>
+      <span className='text-sm text-neutral-400 block mb-1'>What`s new</span>
+      <h2 className='font-bold text-xl md:text-2xl'>Most recent</h2>
     </div>
-    {!pending && posts && <ul className='grid'>{posts.map(e => <li key={e.id}><Post post={e} parent={'a'} /></li>)}</ul>}
-    {pending && <><BlogItem /><BlogItem /><BlogItem /></>}
-    <div className='flex justify-between gap-1 p-5 mt-auto'>
+    {!pending && posts && <ul className='grid gap-5'>{posts.map(e => <li key={e.id}><Post post={e} parent={'a'} /></li>)}</ul>}
+    {pending && <div className='grid gap-5'><BlogItem /><BlogItem /><BlogItem /></div>}
+    <div className='flex justify-between gap-2 p-5 md:p-6 mt-4 border-t border-neutral-800'>
       <button
-        className='px-2 text-inherit flex disabled:text-transparent bg-transparent'
+        className='px-5 py-2.5 text-inherit flex items-center gap-2 disabled:text-neutral-600 disabled:cursor-not-allowed bg-transparent hover:bg-neutral-800/50 rounded-lg transition-all font-medium'
         onClick={() => setpage(page - 1)}
-        disabled={page === 0}><Link className='flex gap-2 place-items-center' href='#firstPost'><GrPrevious />Previous</Link></button>
+        disabled={page === 0}><Link className='flex gap-2 items-center' href='#firstPost'><GrPrevious />Previous</Link></button>
       <button
-        className='px-2 text-inherit flex disabled:text-transparent bg-transparent'
+        className='px-5 py-2.5 text-inherit flex items-center gap-2 disabled:text-neutral-600 disabled:cursor-not-allowed bg-transparent hover:bg-neutral-800/50 rounded-lg transition-all font-medium'
         onClick={() => setpage(page + 1)}
-        disabled={page + 1 === last}><Link href='#firstPost' className='flex gap-2 place-items-center'>Next <GrNext /></Link></button>
+        disabled={page + 1 === last}><Link href='#firstPost' className='flex gap-2 items-center'>Next <GrNext /></Link></button>
     </div>
   </div>)
 }

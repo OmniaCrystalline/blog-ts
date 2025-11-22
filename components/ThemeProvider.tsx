@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { createContext } from "react";
+import { ReactNode } from 'react';
 
 interface ThemeContextType {
   theme: string;
@@ -13,8 +14,6 @@ export const ThemeContext = createContext<ThemeContextType>({
     return prevTheme === 'dark' ? 'light' : 'dark';
   },
 });
-
-import { ReactNode } from 'react';
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState('dark')
@@ -32,22 +31,23 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     if (mounted) {
       localStorage.setItem('theme', theme)
+      // Apply theme class to body element
+      const body = document.body
+      body.classList.remove('dark', 'light')
+      body.classList.add(theme)
     }
   }, [theme, mounted])
 
-  if (!mounted) {
-    return (
-      <body className="container px-5 ml-auto mr-auto grid min-h-screen max-w-6xl min-w-sm transition-all grid-rows-[auto_1fr_auto] dark">
-        {children}
-      </body>
-    )
-  }
+  // Apply initial theme class on mount
+  useEffect(() => {
+    const body = document.body
+    const baseClasses = "container px-5 ml-auto mr-auto grid min-h-screen max-w-6xl min-w-sm transition-all grid-rows-[auto_1fr_auto]"
+    body.className = `${baseClasses} ${mounted ? theme : 'dark'}`
+  }, [mounted, theme])
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }} >
-      <body
-        className={`container px-5 ml-auto mr-auto grid min-h-screen max-w-6xl min-w-sm transition-all grid-rows-[auto_1fr_auto] ${theme}`}>
-        {children}</body>
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
     </ThemeContext.Provider>
   )
 }

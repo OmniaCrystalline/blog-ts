@@ -102,6 +102,13 @@
   .ql-snow .ql-picker-item:hover {
     @apply text-blue-500
   }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 @keyframes shadowRolling {
