@@ -7,6 +7,15 @@ import Link from 'next/link';
 import FooterLinks from './FooterLinks';
 
 const Footer = () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const FacebookIcon = SiFacebook as React.ComponentType<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const TelegramIcon = FaTelegramPlane as React.ComponentType<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const ViberIcon = SiViber as React.ComponentType<any>;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const InstagramIcon = SiInstagram as React.ComponentType<any>;
+
     return (
         <div className='border-t-2 border-slate-500 px-5 py-5 '>
             <div className='grid gap-5 grid-cols-[1fr_1fr_1fr] md:grid-cols-[3fr_1fr_1fr_1fr]'>
@@ -14,14 +23,10 @@ const Footer = () => {
                     <h1 className='font-bold mb-2'>Blog</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta iste similique omnis error iusto nam, enim ea deleniti. Harum sequi rerum perspiciatis illo earum eaque eos laboriosam repellat vitae et.</p>
                     <div className='flex gap-2 md:flex-2'>
-                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
-                        <SiFacebook />
-                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
-                        <FaTelegramPlane />
-                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
-                        <SiViber />
-                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
-                        <SiInstagram/>
+                        <FacebookIcon />
+                        <TelegramIcon />
+                        <ViberIcon />
+                        <InstagramIcon />
                     </div>
                 </div>
                 <div className='grid place-items-stretch'>

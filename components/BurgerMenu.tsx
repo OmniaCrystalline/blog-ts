@@ -10,11 +10,13 @@ interface BurgerMenuProps {
 
 const BurgerMenu: React.FC<BurgerMenuProps> = () => {
     const [open, setopen] = useState(false)
-    return (<>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const HamburgerIcon = RxHamburgerMenu as React.ComponentType<any>;
+    
+    return (<> 
         <div className='md:hidden h-full ml-auto'>
             <button className='bg-inherit p-0 hover:bg-slate-500' onClick={() => setopen(!open)}>
-                {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
-                <RxHamburgerMenu className='w-10 h-10 text-inherit' />
+                <HamburgerIcon className='w-10 h-10 text-inherit' />
             </button>
         </div>
         {open && <MobileMenu setopen={setopen} open={open} />}
