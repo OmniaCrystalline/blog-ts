@@ -14,9 +14,13 @@ const Footer = () => {
                     <h1 className='font-bold mb-2'>Blog</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta iste similique omnis error iusto nam, enim ea deleniti. Harum sequi rerum perspiciatis illo earum eaque eos laboriosam repellat vitae et.</p>
                     <div className='flex gap-2 md:flex-2'>
+                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
                         <SiFacebook />
+                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
                         <FaTelegramPlane />
+                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
                         <SiViber />
+                        {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
                         <SiInstagram/>
                     </div>
                 </div>

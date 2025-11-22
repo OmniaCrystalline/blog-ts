@@ -21,8 +21,14 @@ const RPosts = (props: { data: IPost[], last: number, page: number }) => {
                 {<ul className='grid'>{data.map(e => <li key={e.id}><Post post={e} parent={'a'} /></li>)}</ul>}
                 <div className='flex justify-between gap-1 p-5 mt-auto'>
                     <div className='flex cont justify-between mt-auto' >
-                        <Link href={`${path}?page=${page === 0 ? 0 : page - 1}`} className={page === 0 ? 'hidden' : 'flex place-items-center'}><GrPrevious />Previous</Link>
-                        <Link href={`${path}?page=${page + 1 === last ? page : page + 1}`} className={page + 1 === last ? 'hidden' : 'flex place-items-center'}>Next <GrNext /></Link>
+                        <Link href={`${path}?page=${page === 0 ? 0 : page - 1}`} className={page === 0 ? 'hidden' : 'flex place-items-center'}>
+                          {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
+                          <GrPrevious />Previous
+                        </Link>
+                        <Link href={`${path}?page=${page + 1 === last ? page : page + 1}`} className={page + 1 === last ? 'hidden' : 'flex place-items-center'}>
+                          Next {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
+                          <GrNext />
+                        </Link>
                     </div>
                 </div>
             </div>

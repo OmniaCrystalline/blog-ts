@@ -38,11 +38,17 @@ const RecentPosts = () => {
       <button
         className='px-5 py-2.5 text-inherit flex items-center gap-2 disabled:text-neutral-600 disabled:cursor-not-allowed bg-transparent hover:bg-neutral-800/50 rounded-lg transition-all font-medium'
         onClick={() => setpage(page - 1)}
-        disabled={page === 0}><Link className='flex gap-2 items-center' href='#firstPost'><GrPrevious />Previous</Link></button>
+        disabled={page === 0}><Link className='flex gap-2 items-center' href='#firstPost'>
+          {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
+          <GrPrevious />Previous
+        </Link></button>
       <button
         className='px-5 py-2.5 text-inherit flex items-center gap-2 disabled:text-neutral-600 disabled:cursor-not-allowed bg-transparent hover:bg-neutral-800/50 rounded-lg transition-all font-medium'
         onClick={() => setpage(page + 1)}
-        disabled={page + 1 === last}><Link href='#firstPost' className='flex gap-2 items-center'>Next <GrNext /></Link></button>
+        disabled={page + 1 === last}><Link href='#firstPost' className='flex gap-2 items-center'>
+          Next {/* @ts-expect-error - react-icons type compatibility issue with React 19 */}
+          <GrNext />
+        </Link></button>
     </div>
   </div>)
 }

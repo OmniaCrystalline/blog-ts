@@ -2,10 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import { datestring } from './helpers/functions'
 import prisma from '@/utils/prisma/prisma'
+import { Post, Category } from '@prisma/client'
+
+type PostWithCategory = Post & {
+    cat: Category
+}
 
 const SideMenu = async () => {
 
-    const posts = await prisma.post.findMany({
+    const posts: PostWithCategory[] = await prisma.post.findMany({
         orderBy: {
             views: 'desc'
         },
@@ -22,7 +27,7 @@ const SideMenu = async () => {
                 <h2 className='font-bold text-xl md:text-2xl'>Most popular</h2>
             </div>
             <div className='grid gap-4'>
-                {posts?.map((e) => <div className='grid gap-3 p-4 bg-neutral-900/50 rounded-lg hover:bg-neutral-900/70 transition-all border border-neutral-800/50 hover:border-neutral-700' key={e.id + 'sidemenu'}>
+                {posts?.map((e: PostWithCategory) => <div className='grid gap-3 p-4 bg-neutral-900/50 rounded-lg hover:bg-neutral-900/70 transition-all border border-neutral-800/50 hover:border-neutral-700' key={e.id + 'sidemenu'}>
                     <div className='flex justify-between items-center'>
                         <span className={`rounded-full px-3 py-1 text-xs font-medium ${e.cat.color} text-white shadow-sm`}>{e.catSlag}</span>
                     </div>
